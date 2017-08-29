@@ -41,7 +41,7 @@ void printUsage() {
     printf("2) 5dv dec [path to a 5dv file] [path to save the uncompressed file]\n");
     printf("3) 5dv create [type] [destination path for the 5dvu file]. available types :spheres\n");
     printf("4) 5dv display [element 1] [optionl:element 2]. These must be uncompressed 5dvu files\n");
-    printf("4) 5dv full [folder name]. Runs the full process: create, encode, decode, shhow. All files will get created in that folder. Make sure the folder exists and empty\n");
+    printf("5) 5dv full [folder name]. Runs the full process: create, encode, decode, shhow. All files will get created in that folder. Make sure the folder exists and empty\n");
   
 }
 

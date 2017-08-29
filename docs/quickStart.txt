@@ -1,0 +1,9 @@
+5dv - requirements:
+
+In order to run this you will need:
+
+A) Osx machine with Xcode (Windows or CMake version coming soon)
+B) A copy of the SDL2 framework
+C) Zip and unzip executables should be installed on your machine in one of your default paths
+
+
