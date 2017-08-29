@@ -12,7 +12,7 @@ authors or copyright holders be liable for any claim, damages or other
 liability.
 
 NOTICE:
-A) The project is using an un-altered version of SDL V2.0 which's license can be found here:
+A) The project is using an non-altered version of SDL V2.0 which's license can be found here:
 https://www.libsdl.org/license.php
 
 B) DCT formulas came from here: https://unix4lyfe.org/dct-1d/ and here: https://unix4lyfe.org/dct/
