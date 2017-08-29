@@ -1,0 +1,393 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		BC3AF63C1F526BF900AED66F /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = BC3AF63B1F526BF900AED66F /* main.c */; };
+		BC3AF6491F526D4600AED66F /* FiveDVEncDec.c in Sources */ = {isa = PBXBuildFile; fileRef = BC3AF6441F526D4600AED66F /* FiveDVEncDec.c */; };
+		BC3AF64A1F526D4600AED66F /* zips.c in Sources */ = {isa = PBXBuildFile; fileRef = BC3AF6461F526D4600AED66F /* zips.c */; };
+		BC3AF64B1F526D4600AED66F /* FiveDVFrameEncDec.c in Sources */ = {isa = PBXBuildFile; fileRef = BC3AF6481F526D4600AED66F /* FiveDVFrameEncDec.c */; };
+		BC3AF6581F526D5400AED66F /* FDVFile.c in Sources */ = {isa = PBXBuildFile; fileRef = BC3AF64D1F526D5400AED66F /* FDVFile.c */; };
+		BC3AF6591F526D5400AED66F /* FiveDVUFile.c in Sources */ = {isa = PBXBuildFile; fileRef = BC3AF64F1F526D5400AED66F /* FiveDVUFile.c */; };
+		BC3AF65A1F526D5400AED66F /* MovieFrameGrabber.c in Sources */ = {isa = PBXBuildFile; fileRef = BC3AF6511F526D5400AED66F /* MovieFrameGrabber.c */; };
+		BC3AF65B1F526D5400AED66F /* Sim3D2DConverter.c in Sources */ = {isa = PBXBuildFile; fileRef = BC3AF6531F526D5400AED66F /* Sim3D2DConverter.c */; };
+		BC3AF65C1F526D5400AED66F /* SpaceShapesCreator.c in Sources */ = {isa = PBXBuildFile; fileRef = BC3AF6551F526D5400AED66F /* SpaceShapesCreator.c */; };
+		BC3AF65D1F526D5400AED66F /* SimShapeCreator.c in Sources */ = {isa = PBXBuildFile; fileRef = BC3AF6571F526D5400AED66F /* SimShapeCreator.c */; };
+		BC3AF6A81F526DE000AED66F /* EncDecChromaBlocks.c in Sources */ = {isa = PBXBuildFile; fileRef = BC3AF6991F526DE000AED66F /* EncDecChromaBlocks.c */; };
+		BC3AF6A91F526DE000AED66F /* EncDecMacroBlocks.c in Sources */ = {isa = PBXBuildFile; fileRef = BC3AF69B1F526DE000AED66F /* EncDecMacroBlocks.c */; };
+		BC3AF6AA1F526DE000AED66F /* EncDecDCT.c in Sources */ = {isa = PBXBuildFile; fileRef = BC3AF69D1F526DE000AED66F /* EncDecDCT.c */; };
+		BC3AF6AB1F526DE000AED66F /* DCT.c in Sources */ = {isa = PBXBuildFile; fileRef = BC3AF69F1F526DE000AED66F /* DCT.c */; };
+		BC3AF6AC1F526DE000AED66F /* fastDct.c in Sources */ = {isa = PBXBuildFile; fileRef = BC3AF6A11F526DE000AED66F /* fastDct.c */; };
+		BC3AF6AD1F526DE000AED66F /* EncDecQuantization.c in Sources */ = {isa = PBXBuildFile; fileRef = BC3AF6A31F526DE000AED66F /* EncDecQuantization.c */; };
+		BC3AF6AE1F526DE000AED66F /* EncDecZigZag.c in Sources */ = {isa = PBXBuildFile; fileRef = BC3AF6A51F526DE000AED66F /* EncDecZigZag.c */; };
+		BC3AF6AF1F526DE000AED66F /* ZigZag.c in Sources */ = {isa = PBXBuildFile; fileRef = BC3AF6A71F526DE000AED66F /* ZigZag.c */; };
+		BC3AF6B21F526E3F00AED66F /* SDL2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC3AF6B11F526E3F00AED66F /* SDL2.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		BC3AF6361F526BF900AED66F /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		BC3AF6381F526BF900AED66F /* 5dv */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = 5dv; sourceTree = BUILT_PRODUCTS_DIR; };
+		BC3AF63B1F526BF900AED66F /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
+		BC3AF6421F526D4600AED66F /* SimDefs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimDefs.h; sourceTree = "<group>"; };
+		BC3AF6431F526D4600AED66F /* FiveDVEncDec.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FiveDVEncDec.h; sourceTree = "<group>"; };
+		BC3AF6441F526D4600AED66F /* FiveDVEncDec.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = FiveDVEncDec.c; sourceTree = "<group>"; };
+		BC3AF6451F526D4600AED66F /* zips.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zips.h; sourceTree = "<group>"; };
+		BC3AF6461F526D4600AED66F /* zips.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = zips.c; sourceTree = "<group>"; };
+		BC3AF6471F526D4600AED66F /* FiveDVFrameEncDec.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FiveDVFrameEncDec.h; sourceTree = "<group>"; };
+		BC3AF6481F526D4600AED66F /* FiveDVFrameEncDec.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = FiveDVFrameEncDec.c; sourceTree = "<group>"; };
+		BC3AF64C1F526D5400AED66F /* FDVFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FDVFile.h; sourceTree = "<group>"; };
+		BC3AF64D1F526D5400AED66F /* FDVFile.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = FDVFile.c; sourceTree = "<group>"; };
+		BC3AF64E1F526D5400AED66F /* FiveDVUFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FiveDVUFile.h; sourceTree = "<group>"; };
+		BC3AF64F1F526D5400AED66F /* FiveDVUFile.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = FiveDVUFile.c; sourceTree = "<group>"; };
+		BC3AF6501F526D5400AED66F /* MovieFrameGrabber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovieFrameGrabber.h; sourceTree = "<group>"; };
+		BC3AF6511F526D5400AED66F /* MovieFrameGrabber.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = MovieFrameGrabber.c; sourceTree = "<group>"; };
+		BC3AF6521F526D5400AED66F /* Sim3D2DConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sim3D2DConverter.h; sourceTree = "<group>"; };
+		BC3AF6531F526D5400AED66F /* Sim3D2DConverter.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = Sim3D2DConverter.c; sourceTree = "<group>"; };
+		BC3AF6541F526D5400AED66F /* SpaceShapesCreator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpaceShapesCreator.h; sourceTree = "<group>"; };
+		BC3AF6551F526D5400AED66F /* SpaceShapesCreator.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = SpaceShapesCreator.c; sourceTree = "<group>"; };
+		BC3AF6561F526D5400AED66F /* SimShapeCreator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimShapeCreator.h; sourceTree = "<group>"; };
+		BC3AF6571F526D5400AED66F /* SimShapeCreator.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = SimShapeCreator.c; sourceTree = "<group>"; };
+		BC3AF6971F526DE000AED66F /* EncDecDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EncDecDefines.h; sourceTree = "<group>"; };
+		BC3AF6981F526DE000AED66F /* EncDecChromaBlocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EncDecChromaBlocks.h; sourceTree = "<group>"; };
+		BC3AF6991F526DE000AED66F /* EncDecChromaBlocks.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = EncDecChromaBlocks.c; sourceTree = "<group>"; };
+		BC3AF69A1F526DE000AED66F /* EncDecMacroBlocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EncDecMacroBlocks.h; sourceTree = "<group>"; };
+		BC3AF69B1F526DE000AED66F /* EncDecMacroBlocks.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = EncDecMacroBlocks.c; sourceTree = "<group>"; };
+		BC3AF69C1F526DE000AED66F /* EncDecDCT.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EncDecDCT.h; sourceTree = "<group>"; };
+		BC3AF69D1F526DE000AED66F /* EncDecDCT.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = EncDecDCT.c; sourceTree = "<group>"; };
+		BC3AF69E1F526DE000AED66F /* DCT.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCT.h; sourceTree = "<group>"; };
+		BC3AF69F1F526DE000AED66F /* DCT.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = DCT.c; sourceTree = "<group>"; };
+		BC3AF6A01F526DE000AED66F /* fastDct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = fastDct.h; sourceTree = "<group>"; };
+		BC3AF6A11F526DE000AED66F /* fastDct.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = fastDct.c; sourceTree = "<group>"; };
+		BC3AF6A21F526DE000AED66F /* EncDecQuantization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EncDecQuantization.h; sourceTree = "<group>"; };
+		BC3AF6A31F526DE000AED66F /* EncDecQuantization.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = EncDecQuantization.c; sourceTree = "<group>"; };
+		BC3AF6A41F526DE000AED66F /* EncDecZigZag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EncDecZigZag.h; sourceTree = "<group>"; };
+		BC3AF6A51F526DE000AED66F /* EncDecZigZag.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = EncDecZigZag.c; sourceTree = "<group>"; };
+		BC3AF6A61F526DE000AED66F /* ZigZag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZigZag.h; sourceTree = "<group>"; };
+		BC3AF6A71F526DE000AED66F /* ZigZag.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ZigZag.c; sourceTree = "<group>"; };
+		BC3AF6B11F526E3F00AED66F /* SDL2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2.framework; path = ../../../../../Library/Frameworks/SDL2.framework; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		BC3AF6351F526BF900AED66F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BC3AF6B21F526E3F00AED66F /* SDL2.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		BC3AF62F1F526BF900AED66F = {
+			isa = PBXGroup;
+			children = (
+				BC3AF6B01F526E3F00AED66F /* Frameworks */,
+				BC3AF63A1F526BF900AED66F /* 5dv */,
+				BC3AF6391F526BF900AED66F /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		BC3AF6391F526BF900AED66F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BC3AF6381F526BF900AED66F /* 5dv */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BC3AF63A1F526BF900AED66F /* 5dv */ = {
+			isa = PBXGroup;
+			children = (
+				BC3AF63B1F526BF900AED66F /* main.c */,
+				BC3AF6421F526D4600AED66F /* SimDefs.h */,
+				BC3AF6431F526D4600AED66F /* FiveDVEncDec.h */,
+				BC3AF6441F526D4600AED66F /* FiveDVEncDec.c */,
+				BC3AF6451F526D4600AED66F /* zips.h */,
+				BC3AF6461F526D4600AED66F /* zips.c */,
+				BC3AF6471F526D4600AED66F /* FiveDVFrameEncDec.h */,
+				BC3AF6481F526D4600AED66F /* FiveDVFrameEncDec.c */,
+				BC3AF6961F526DB200AED66F /* EncDecPramePhases */,
+				BC3AF64C1F526D5400AED66F /* FDVFile.h */,
+				BC3AF64D1F526D5400AED66F /* FDVFile.c */,
+				BC3AF64E1F526D5400AED66F /* FiveDVUFile.h */,
+				BC3AF64F1F526D5400AED66F /* FiveDVUFile.c */,
+				BC3AF6501F526D5400AED66F /* MovieFrameGrabber.h */,
+				BC3AF6511F526D5400AED66F /* MovieFrameGrabber.c */,
+				BC3AF6521F526D5400AED66F /* Sim3D2DConverter.h */,
+				BC3AF6531F526D5400AED66F /* Sim3D2DConverter.c */,
+				BC3AF6541F526D5400AED66F /* SpaceShapesCreator.h */,
+				BC3AF6551F526D5400AED66F /* SpaceShapesCreator.c */,
+				BC3AF6561F526D5400AED66F /* SimShapeCreator.h */,
+				BC3AF6571F526D5400AED66F /* SimShapeCreator.c */,
+			);
+			path = 5dv;
+			sourceTree = "<group>";
+		};
+		BC3AF6961F526DB200AED66F /* EncDecPramePhases */ = {
+			isa = PBXGroup;
+			children = (
+				BC3AF6971F526DE000AED66F /* EncDecDefines.h */,
+				BC3AF6981F526DE000AED66F /* EncDecChromaBlocks.h */,
+				BC3AF6991F526DE000AED66F /* EncDecChromaBlocks.c */,
+				BC3AF69A1F526DE000AED66F /* EncDecMacroBlocks.h */,
+				BC3AF69B1F526DE000AED66F /* EncDecMacroBlocks.c */,
+				BC3AF69C1F526DE000AED66F /* EncDecDCT.h */,
+				BC3AF69D1F526DE000AED66F /* EncDecDCT.c */,
+				BC3AF69E1F526DE000AED66F /* DCT.h */,
+				BC3AF69F1F526DE000AED66F /* DCT.c */,
+				BC3AF6A01F526DE000AED66F /* fastDct.h */,
+				BC3AF6A11F526DE000AED66F /* fastDct.c */,
+				BC3AF6A21F526DE000AED66F /* EncDecQuantization.h */,
+				BC3AF6A31F526DE000AED66F /* EncDecQuantization.c */,
+				BC3AF6A41F526DE000AED66F /* EncDecZigZag.h */,
+				BC3AF6A51F526DE000AED66F /* EncDecZigZag.c */,
+				BC3AF6A61F526DE000AED66F /* ZigZag.h */,
+				BC3AF6A71F526DE000AED66F /* ZigZag.c */,
+			);
+			name = EncDecPramePhases;
+			sourceTree = "<group>";
+		};
+		BC3AF6B01F526E3F00AED66F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BC3AF6B11F526E3F00AED66F /* SDL2.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		BC3AF6371F526BF900AED66F /* 5dv */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BC3AF63F1F526BF900AED66F /* Build configuration list for PBXNativeTarget "5dv" */;
+			buildPhases = (
+				BC3AF6341F526BF900AED66F /* Sources */,
+				BC3AF6351F526BF900AED66F /* Frameworks */,
+				BC3AF6361F526BF900AED66F /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = 5dv;
+			productName = 5dv;
+			productReference = BC3AF6381F526BF900AED66F /* 5dv */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BC3AF6301F526BF900AED66F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0830;
+				ORGANIZATIONNAME = chen;
+				TargetAttributes = {
+					BC3AF6371F526BF900AED66F = {
+						CreatedOnToolsVersion = 8.3.2;
+						DevelopmentTeam = 8965M74A88;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = BC3AF6331F526BF900AED66F /* Build configuration list for PBXProject "5dv" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = BC3AF62F1F526BF900AED66F;
+			productRefGroup = BC3AF6391F526BF900AED66F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				BC3AF6371F526BF900AED66F /* 5dv */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		BC3AF6341F526BF900AED66F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BC3AF6A81F526DE000AED66F /* EncDecChromaBlocks.c in Sources */,
+				BC3AF64A1F526D4600AED66F /* zips.c in Sources */,
+				BC3AF6A91F526DE000AED66F /* EncDecMacroBlocks.c in Sources */,
+				BC3AF65B1F526D5400AED66F /* Sim3D2DConverter.c in Sources */,
+				BC3AF6AA1F526DE000AED66F /* EncDecDCT.c in Sources */,
+				BC3AF6591F526D5400AED66F /* FiveDVUFile.c in Sources */,
+				BC3AF64B1F526D4600AED66F /* FiveDVFrameEncDec.c in Sources */,
+				BC3AF65D1F526D5400AED66F /* SimShapeCreator.c in Sources */,
+				BC3AF63C1F526BF900AED66F /* main.c in Sources */,
+				BC3AF6AC1F526DE000AED66F /* fastDct.c in Sources */,
+				BC3AF6491F526D4600AED66F /* FiveDVEncDec.c in Sources */,
+				BC3AF6581F526D5400AED66F /* FDVFile.c in Sources */,
+				BC3AF6AB1F526DE000AED66F /* DCT.c in Sources */,
+				BC3AF65C1F526D5400AED66F /* SpaceShapesCreator.c in Sources */,
+				BC3AF6AD1F526DE000AED66F /* EncDecQuantization.c in Sources */,
+				BC3AF6AF1F526DE000AED66F /* ZigZag.c in Sources */,
+				BC3AF65A1F526D5400AED66F /* MovieFrameGrabber.c in Sources */,
+				BC3AF6AE1F526DE000AED66F /* EncDecZigZag.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		BC3AF63D1F526BF900AED66F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		BC3AF63E1F526BF900AED66F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		BC3AF6401F526BF900AED66F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = 8965M74A88;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(LOCAL_LIBRARY_DIR)/Frameworks",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		BC3AF6411F526BF900AED66F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = 8965M74A88;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(LOCAL_LIBRARY_DIR)/Frameworks",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		BC3AF6331F526BF900AED66F /* Build configuration list for PBXProject "5dv" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BC3AF63D1F526BF900AED66F /* Debug */,
+				BC3AF63E1F526BF900AED66F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BC3AF63F1F526BF900AED66F /* Build configuration list for PBXNativeTarget "5dv" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BC3AF6401F526BF900AED66F /* Debug */,
+				BC3AF6411F526BF900AED66F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BC3AF6301F526BF900AED66F /* Project object */;
+}
