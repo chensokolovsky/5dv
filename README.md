@@ -11,7 +11,7 @@ If you want to read the code go ahead. Below you will find some documentation in
 1) Read what you need for the current code to work here: http://www.5dv.org/requirements.txt
 2) Read how to run this for the first time: http://www.5dv.org/howtorun.txt
 3) Read the executable usage: http://www.5dv.org/executableUsage.txt
-4) Read how the code works in general (This text is technical): http://www.5dv.org/codeBasics.txt
+4) This is how the code works, and files formats (This text is technical): http://www.5dv.org/codeBasics.txt
 5) Read what is missing and how you can contribute: http://www.5dv.org/whatismissong.txt
 
 Hope you enjoy 5dv.
