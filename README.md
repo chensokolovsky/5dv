@@ -1,6 +1,6 @@
 # 5dv
 
-Welcome to 5dv. For general questions about this please visit the project's home page: 5dv.org
+Welcome to 5dv. For general questions about this please visit the project's home page: http://www.5dv.org
 
 This project is NOT open source. Please read the LICENSE file in this repo.
 
