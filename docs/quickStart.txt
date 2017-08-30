@@ -1,9 +1,79 @@
-5dv - requirements:
+©5dv Chen Sokolovsky 2017
 
-In order to run this you will need:
+5dv - quick start:
 
-A) Osx machine with Xcode (Windows or CMake version coming soon)
-B) A copy of the SDL2 framework
-C) Zip and unzip executables should be installed on your machine in one of your default paths
+—————————————————————————————
+
+There are 2 file types:
+fileName.5dv - the compressed file
+fileName.5dvu - the uncompressed file.
+
+The uncompressed file is the raw information RGBA of Width x Depth x Height
+See docs/Documentation.txt in the repo for more details about the uncompressed file format
+
+—————————————————————————————
+
+To fastest way to check the simulator is this:
+
+1) In terminal, create a folder for the new file:
+mkdir /myFolder
+
+2) Run 5dv once to create an uncompressed spheres file. This creates a short 30 fps 2 shares moving in a 3d box;
+./5dv create spheres /myFolder/spheres.5dvu
+
+3) Run 5dv again to display the uncompressed file:
+./5dv display /myFolder/spheres.5dvu
+
+Discussion:
+- There is no compression in this example, only a primary simulator check
+- Make sure to run the ./5dv command from the executable folder (unless it is in a default path on your machine)
+- The new folder path can be absolute (i.e.: /Users/myName/Desktop/MyPrograms/5dv/)
+
+—————————————————————————————
+
+The fastest way to test encoder decoder is this:
+
+1) In terminal, create a folder for the new files
+mkdir /myFolder2
+
+2) Tun 5dv full process. This will create spheres, encode them, decode them, and display both compression qualities side by side:
+./5dv full /myFolder2
+
+Discussion:
+- This code runs everything for you: creation of spheres, compressing it, decompressing it, and displaying the two files on the simulator. I recommend going through the process on the next paragraph step by step.
+- Make sure to run the ./5dv command from the executable folder (unless it is in a default path on your machine)
+- The new folder path can be absolute (i.e.: /Users/myName/Desktop/MyPrograms/5dv/)
+
+
+—————————————————————————————————
+
+The best way to understand the process is this:
+
+1) In terminal create a new folder for all the files
+mkdir /myFolder3
+
+2) Create the initial uncompressed phrased file (see above)
+If that is working you are ready to use the other options like enc/dec
+
+3) Look at the spheres (if you haven’t yet)
+./5dv display /myFolder3/spheres.5dvu
+
+
+4) Compress the spheres to a new 5dv file:
+./5dv enc /myFolder3/spheres.5dvu /myFolder3/myCompressedSpheres.5dv
+
+
+5) The simulator can’t display compressed file, so decompress it. Since this is a lossy compression, the quality in the new uncompressed file will be lower. We are decompressing it for presentation purposes:
+./5dv dec /myFolder3/myCompressedSpheres.5dv /myFolder3/myLossySpheres.5dvu
+
+6) Display both original and lossy files. 5dv display can take one or two 5dvu path arguments:
+./5dv display /myFolder3/spheres.5dvu /myFolder3/myLossySpheres.5dvu
+
+
+Discussion:
+If you successfully ran these examples, you now know the stages of the process. For more details about the code read the documentation.txt file in the docs folder of the repo
+
+
+
 
 

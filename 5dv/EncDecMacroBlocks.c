@@ -58,7 +58,7 @@ void freeMegaBlock(struct megaBlock* megaBlock) {
 
 unsigned int getIndexOfLocationInTVSize(struct zLocation location, struct TVSize tvSize) {
     
-    unsigned answer = location.y * tvSize.width * tvSize.deapth;
+    unsigned answer = location.y * tvSize.width * tvSize.depth;
     answer += location.z * tvSize.width;
     answer += location.x;
     return answer;
@@ -67,10 +67,10 @@ unsigned int getIndexOfLocationInTVSize(struct zLocation location, struct TVSize
 struct zLocation getZLocationOfIndexInTVSize(int index, struct TVSize tvSize) {
     
     struct zLocation answer;
-    answer.y = index / (tvSize.width * tvSize.deapth);
-    int indexMinusHeight = index - answer.y * (tvSize.width * tvSize.deapth);
-    answer.z = indexMinusHeight / tvSize.deapth;
-    int indexMinusDeapth = indexMinusHeight - answer.z * tvSize.deapth;
+    answer.y = index / (tvSize.width * tvSize.depth);
+    int indexMinusHeight = index - answer.y * (tvSize.width * tvSize.depth);
+    answer.z = indexMinusHeight / tvSize.depth;
+    int indexMinusDeapth = indexMinusHeight - answer.z * tvSize.depth;
     answer.x = indexMinusDeapth;
 
     return answer;
@@ -85,10 +85,10 @@ struct zLocation makeZLocation(int x, int z, int y) {
     return answer;
 }
 
-struct TVSize makeTVSize(int width, int deapth, int height) {
+struct TVSize makeTVSize(int width, int depth, int height) {
     struct TVSize answer;
     answer.width = width;
-    answer.deapth = deapth;
+    answer.depth = depth;
     answer.height = height;
     return answer;
 }
@@ -104,7 +104,7 @@ int performPhaseEncodeMacroBlocks(unsigned char** inBuffer, struct EncDecData tv
     
     // best thing to do is to create a buffer as if nothing is zero. we can later realloc the outbuffer to a smaller one
     int tvWidth = tvData.tvsize.width;
-    int tvDeapth = tvData.tvsize.deapth;
+    int tvDeapth = tvData.tvsize.depth;
     int tvHeight = tvData.tvsize.height;
     int chromaBlocksInWidth = tvWidth / chromaBlockWidth;
     int chromaBlocksInDeapth = tvDeapth / chromaBlockDeapth;
@@ -167,18 +167,18 @@ int performPhaseEncodeMacroBlocks(unsigned char** inBuffer, struct EncDecData tv
                             
                             int totalChromaBlocksInHeightSoFar = heightOfTheCurrentChromaBlockWithinThisMegaBlockInTheInputChromaBlocks * chromaBlocksInWidth * chromaBlocksInDeapth;
                             
-                            // Now to the deapth:
+                            // Now to the depth:
                             
-                            int deapthOfTheCurrentChomaBlockWithinThisMegaBlockInTheInputChromaBlock = megaBlockDeapthIndex * megaBlocksDeapthInChromaBlocks + innerDeapthInMegaBlock;
+                            int depthOfTheCurrentChomaBlockWithinThisMegaBlockInTheInputChromaBlock = megaBlockDeapthIndex * megaBlocksDeapthInChromaBlocks + innerDeapthInMegaBlock;
                             
-                            int totalChromaBlocksInDepthSoFar = deapthOfTheCurrentChomaBlockWithinThisMegaBlockInTheInputChromaBlock * chromaBlocksInWidth;
+                            int totalChromaBlocksInDeapthSoFar = depthOfTheCurrentChomaBlockWithinThisMegaBlockInTheInputChromaBlock * chromaBlocksInWidth;
                             
                             // now the width
                             
                             int widthOfTheCurrentChromaBlockWithinThisMegaBlockInTheInputBlock = megaBlockWidthIndex * megaBlocksWidthInChromaBlocks + innerWidthInMegaBlock;
                             
                             // sum these up
-                            int indexOfTheCurentChromaBlockWithinThisMegaBlockInTheInputBuffer = totalChromaBlocksInHeightSoFar + totalChromaBlocksInDepthSoFar + widthOfTheCurrentChromaBlockWithinThisMegaBlockInTheInputBlock;
+                            int indexOfTheCurentChromaBlockWithinThisMegaBlockInTheInputBuffer = totalChromaBlocksInHeightSoFar + totalChromaBlocksInDeapthSoFar + widthOfTheCurrentChromaBlockWithinThisMegaBlockInTheInputBlock;
                 
                             // now make sure to read the real value of cr and cb
                             int indexOfThisCb = indexOfTheCurentChromaBlockWithinThisMegaBlockInTheInputBuffer * sizeOfYCbCrGroupInBytes;
@@ -239,11 +239,11 @@ int performPhaseEncodeMacroBlocks(unsigned char** inBuffer, struct EncDecData tv
                                         indexOfChromaBlocksAfterHeightOfMegaBlock + indexOfChromaBlocksOfHeightOfMacroBlock + indexOfChromaBlocksOfHeightOfInnerChromaBlockInMacroBlock;
                                         
                                         /////////
-                                        // Now, the deapth
-                                        // the deapth is the current mega block deapth index * how many width of chroma bloak exist in a mega block * how many chorma blocks are in a row
-                                        // plus the current macro block deapth index * how many chroma blocks are in the width of a macro block
+                                        // Now, the depth
+                                        // the depth is the current mega block depth index * how many width of chroma bloak exist in a mega block * how many chorma blocks are in a row
+                                        // plus the current macro block depth index * how many chroma blocks are in the width of a macro block
                                         // plus the current mega block inner index * how many chroma blocks are in a chrome block row
-                                        int totalChromaBlocksInAMegaBlockWidth /*don't get confused by the word width. it is equivalent to the plane when calculating for deapth*/ = (megaBlockDimension * macroBlockDimension / chromaBlockWidth )* chromaBlocksInWidth;
+                                        int totalChromaBlocksInAMegaBlockWidth /*don't get confused by the word width. it is equivalent to the plane when calculating for depth*/ = (megaBlockDimension * macroBlockDimension / chromaBlockWidth )* chromaBlocksInWidth;
                                         int indexOfChromaBlocksOfTheMegaBlockDeapth = totalChromaBlocksInAMegaBlockWidth * megaBlockDeapthIndex;
                                         
                                         int totalChromaBlocksInAMacroBlockWidth = (macroBlockDimension / chromaBlockWidth) * chromaBlocksInWidth;
@@ -252,7 +252,7 @@ int performPhaseEncodeMacroBlocks(unsigned char** inBuffer, struct EncDecData tv
                                         int totalChromaBlocksInAChromaBlocksWidth = chromaBlocksInWidth;
                                         int indexOfChromaBlocksOfChromaBlocksDeapth = totalChromaBlocksInAChromaBlocksWidth * innerChromaBlockDeapthIndex;
                                         
-                                        // sum these up to get total deapth
+                                        // sum these up to get total depth
                                         int totalIndexOfDeapthOfChromaBlocksOfThisInnerChromaBlockInInputBuffer =
                                         indexOfChromaBlocksOfTheMegaBlockDeapth + indexOfChromaBlocksOfTheMacroBlockDeapth + indexOfChromaBlocksOfChromaBlocksDeapth;
                                         
@@ -402,7 +402,7 @@ int performPhaseDecodeMacroBlocks(unsigned char** inBuffer, struct EncDecData tv
     
     
     int megaBlocksInWidth = tvData.tvsize.width  / (chromaBlockWidth * macroBlockDimension);
-    int megaBlocksInDeapth = tvData.tvsize.deapth / (chromaBlockDeapth * macroBlockDimension);
+    int megaBlocksInDeapth = tvData.tvsize.depth / (chromaBlockDeapth * macroBlockDimension);
     int megaBlocksInHeight = tvData.tvsize.height / (chromaBlockHeight * macroBlockDimension);
     int totalMegaBlocksInTV = megaBlocksInWidth * megaBlocksInDeapth * megaBlocksInHeight;
     
@@ -410,7 +410,7 @@ int performPhaseDecodeMacroBlocks(unsigned char** inBuffer, struct EncDecData tv
     // allocate the output buffer
     int chromaBlockSizeInBytes = 2 + 2 * (chromaBlockHeight * chromaBlockDeapth * chromaBlockWidth); // cb + cr + 8 lumas 8 aplhas
     int chromaBlocksInWidth = tvData.tvsize.width / chromaBlockWidth;
-    int chromaBlocksInDeapth = tvData.tvsize.deapth / chromaBlockDeapth;
+    int chromaBlocksInDeapth = tvData.tvsize.depth / chromaBlockDeapth;
     int chromaBlocksInHeight = tvData.tvsize.height / chromaBlockHeight;
     int totalChromaBlocksInTV = chromaBlocksInWidth * chromaBlocksInDeapth * chromaBlocksInHeight;
     unsigned int outputBufferSizeInBytes = totalChromaBlocksInTV * chromaBlockSizeInBytes;
@@ -449,13 +449,13 @@ int performPhaseDecodeMacroBlocks(unsigned char** inBuffer, struct EncDecData tv
                                 int hightOfMegaBlock = megaBlockHeightIndex * macroBlockDimension;
                                 int heightOfChromaBlock = hightOfMegaBlock + innerHeightInMegaBlock;
                                 
-                                int deapthOfMegaBlock = megaBlockDeapthIndex * macroBlockDimension;
-                                int deapthOfChromaBlock = deapthOfMegaBlock + innerDeapthInMegaBlock;
+                                int depthOfMegaBlock = megaBlockDeapthIndex * macroBlockDimension;
+                                int depthOfChromaBlock = depthOfMegaBlock + innerDeapthInMegaBlock;
                                 
                                 int widthOfMegaBlock = megaBlockWidthIndex * macroBlockDimension;
                                 int widthOfChromaBlock = widthOfMegaBlock + innerWidthInMegaBlock;
                                 
-                                struct zLocation locationOnTV = makeZLocation(widthOfChromaBlock, deapthOfChromaBlock, heightOfChromaBlock);
+                                struct zLocation locationOnTV = makeZLocation(widthOfChromaBlock, depthOfChromaBlock, heightOfChromaBlock);
                                 int indexOfChromaBlockInOutputBuffer = getIndexOfLocationInTVSize(locationOnTV, makeTVSize(chromaBlocksInWidth, chromaBlocksInDeapth, chromaBlocksInHeight));
                                 
                                 unsigned char* thisChromaBlockWritingBuffer = *outBuffer + (indexOfChromaBlockInOutputBuffer * chromaBlockSizeInBytes);
@@ -485,13 +485,13 @@ int performPhaseDecodeMacroBlocks(unsigned char** inBuffer, struct EncDecData tv
                                     int hightOfMegaBlock = megaBlockHeightIndex * macroBlockDimension;
                                     int heightOfChromaBlock = hightOfMegaBlock + innerHeightInMegaBlock;
                                     
-                                    int deapthOfMegaBlock = megaBlockDeapthIndex * macroBlockDimension;
-                                    int deapthOfChromaBlock = deapthOfMegaBlock + innerDeapthInMegaBlock;
+                                    int depthOfMegaBlock = megaBlockDeapthIndex * macroBlockDimension;
+                                    int depthOfChromaBlock = depthOfMegaBlock + innerDeapthInMegaBlock;
                                     
                                     int widthOfMegaBlock = megaBlockWidthIndex * macroBlockDimension;
                                     int widthOfChromaBlock = widthOfMegaBlock + innerWidthInMegaBlock;
                                     
-                                    struct zLocation locationOnTV = makeZLocation(widthOfChromaBlock, deapthOfChromaBlock, heightOfChromaBlock);
+                                    struct zLocation locationOnTV = makeZLocation(widthOfChromaBlock, depthOfChromaBlock, heightOfChromaBlock);
                                     int indexOfChromaBlockInOutputBuffer = getIndexOfLocationInTVSize(locationOnTV, makeTVSize(chromaBlocksInWidth, chromaBlocksInDeapth, chromaBlocksInHeight));
                                     
                                     unsigned char* thisChromaBlockWritingBuffer = *outBuffer + (indexOfChromaBlockInOutputBuffer * chromaBlockSizeInBytes);
@@ -520,9 +520,9 @@ int performPhaseDecodeMacroBlocks(unsigned char** inBuffer, struct EncDecData tv
                                             for (int innerWidthIndexInMacroBlock = 0; innerWidthIndexInMacroBlock < macroBlockDimension; innerWidthIndexInMacroBlock++) {
                                                 
                                                 // get the location of this chroma block in the output buffer
-                                                // index is total height * chromablocks in plane + total deapth * chroma blocks in widht + totalWidth
+                                                // index is total height * chromablocks in plane + total depth * chroma blocks in widht + totalWidth
                                                 // this can be achieved by inding the index of the chroma blocks in the output buffer like this:
-                                                //getIndexOfLocation(totalHeight,totalDeapth,totalWidth)inTVSize(chromaBlocksInTVHeight,chromaBlocksInTVDeapth,chromaBlocksInTVWidth)
+                                                //getIndexOfLocation(totalHeight,totalDeapth,totalWidth)inTVSize(chromaBlocksInTVHeight,chromaBlocksInTvDeapth,chromaBlocksInTVWidth)
                                                 //
                                                 // We start with total hight, which is  height of the Meaga block * total chroma blocks in a mega bclok heigh + height of macro block * chroma blocks in a macro block + height of the inner pixel / height of the chroma block (remainder will be the inner index in the chroma block buffer according to [cr,cb,y0,a0,y1,a1,...,a7]
                                                 //
@@ -533,16 +533,16 @@ int performPhaseDecodeMacroBlocks(unsigned char** inBuffer, struct EncDecData tv
                                                 int chromaBlockHeightOfThisPixel = innerHeightIndexInMacroBlock / chromaBlockHeight;
                                                 int totalHeightInChromaBlocks = heightOfMegaBlockInChromaBlocks + heightOfMacroBlockInChromaBlocks + chromaBlockHeightOfThisPixel;
                                                 
-                                                // The total deapth is the deapth of this mega block * total chroma blocks in a mega blcoks deapth + deapth of macro block * totalChroma blocks in macro block * deapth of inner pixel / deapth of chroma block (remainder will be the inner index in the chroma blocks as above
+                                                // The total depth is the depth of this mega block * total chroma blocks in a mega blcoks depth + depth of macro block * totalChroma blocks in macro block * depth of inner pixel / depth of chroma block (remainder will be the inner index in the chroma blocks as above
                                                 int chromaBlocksInAMegaBlockDeapth = megaBlockDimension * macroBlockDimension / chromaBlockDeapth;
-                                                int deapthOfMegaBlockInChromaBlocks = megaBlockDeapthIndex * chromaBlocksInAMegaBlockDeapth;
+                                                int depthOfMegaBlockInChromaBlocks = megaBlockDeapthIndex * chromaBlocksInAMegaBlockDeapth;
                                                 int chromaBlocksInAMacroBlockDeapth = macroBlockDimension / chromaBlockDeapth;
-                                                int deapthOfMacroBlockInChromaBlocks = macroBlockDeapthIndexInMegaBlock * chromaBlocksInAMacroBlockDeapth;
+                                                int depthOfMacroBlockInChromaBlocks = macroBlockDeapthIndexInMegaBlock * chromaBlocksInAMacroBlockDeapth;
                                                 int chromaBlockDeapthOfThisPixel = innerDeapthIndexInMacroBlock / chromaBlockDeapth;
-                                                int totalDeapthtInChromaBlocks = deapthOfMegaBlockInChromaBlocks + deapthOfMacroBlockInChromaBlocks + chromaBlockDeapthOfThisPixel;
+                                                int totalDeapthtInChromaBlocks = depthOfMegaBlockInChromaBlocks + depthOfMacroBlockInChromaBlocks + chromaBlockDeapthOfThisPixel;
                                                 
                                                 
-                                                // the total width is the width of the mega block * total chroma blocks in a mega block width + deapth of the macro block within the mega block * total chroma block in macro block * innder width of pixel / width of chroma block (remainder etcc as above)
+                                                // the total width is the width of the mega block * total chroma blocks in a mega block width + depth of the macro block within the mega block * total chroma block in macro block * innder width of pixel / width of chroma block (remainder etcc as above)
                                                 int chromaBlocksInAMegaBlockWidth = megaBlockDimension * macroBlockDimension / chromaBlockWidth;
                                                 int widthOfMegaBlockInChromaBlocks = megaBlockWidthIndex * chromaBlocksInAMegaBlockWidth;
                                                 int chromaBlocksInAMacroBlockWidth = macroBlockDimension / chromaBlockWidth;
@@ -569,10 +569,10 @@ int performPhaseDecodeMacroBlocks(unsigned char** inBuffer, struct EncDecData tv
                                                 //
                                                 // first get the  remainders
                                                 int heightInChromaBlock = innerHeightIndexInMacroBlock % chromaBlockHeight;
-                                                int deapthInChromaBlock = innerDeapthIndexInMacroBlock % chromaBlockDeapth;
+                                                int depthInChromaBlock = innerDeapthIndexInMacroBlock % chromaBlockDeapth;
                                                 int widthInChromaBlock = innerWidthIndexInMacroBlock % chromaBlockWidth;
                                                 
-                                                int indexInSmallChromaBuffer = getIndexOfLocationInTVSize(makeZLocation(widthInChromaBlock, deapthInChromaBlock, heightInChromaBlock), makeTVSize(chromaBlockWidth, chromaBlockDeapth, chromaBlockHeight));
+                                                int indexInSmallChromaBuffer = getIndexOfLocationInTVSize(makeZLocation(widthInChromaBlock, depthInChromaBlock, heightInChromaBlock), makeTVSize(chromaBlockWidth, chromaBlockDeapth, chromaBlockHeight));
                                                 
                                                 // we double the index by the 2 string (y,a,y,a)
                                                 indexInSmallChromaBuffer *= 2;

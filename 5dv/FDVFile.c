@@ -42,7 +42,7 @@ int convert(char* inputPath, char* outputPath, int shouldCompress) {
         struct TVSize chromaBlockSize;
         chromaBlockSize.width = chromaBlockWidth;
         chromaBlockSize.height = chromaBlockHeight;
-        chromaBlockSize.deapth = chromaBlockDeapth;
+        chromaBlockSize.depth = chromaBlockDeapth;
         outHeader.chromaBlockSize = chromaBlockSize;
         
         // Single frame
@@ -104,14 +104,14 @@ int createFDVFile(char* name, struct FDVFileHeader header, FILE** fp) {
     fwrite(&tvwidth,4,1,*fp);
     unsigned int tvheight = header.tvsize.height;
     fwrite(&tvheight,4,1,*fp);
-    unsigned int tvdeapth = header.tvsize.deapth;
-    fwrite(&tvdeapth,4,1,*fp);
+    unsigned int tvDeapth = header.tvsize.depth;
+    fwrite(&tvDeapth,4,1,*fp);
     unsigned int totalFrames = header.totalFrames;
     fwrite(&totalFrames,4,1,*fp);
     unsigned int framesPerSecond = header.framesPerSecond;
     fwrite(&framesPerSecond,4,1,*fp);
     unsigned char chromaWidth = header.chromaBlockSize.width;
-    unsigned char chromaDeapth = header.chromaBlockSize.deapth;
+    unsigned char chromaDeapth = header.chromaBlockSize.depth;
     unsigned char chromaHeight = header.chromaBlockSize.height;
     unsigned char zero = 0;
     fwrite(&chromaWidth, 1, 1, *fp);
@@ -161,11 +161,11 @@ int openFDVFile(char* name, struct FDVFileHeader* header, FILE** fp) {
     fread(&tvwidth,4,1,*fp);
     unsigned int tvheight;
     fread(&tvheight,4,1,*fp);
-    unsigned int tvdeapth;
-    fread(&tvdeapth,4,1,*fp);
+    unsigned int tvDeapth;
+    fread(&tvDeapth,4,1,*fp);
     header->tvsize.width = tvwidth;
     header->tvsize.height = tvheight;
-    header->tvsize.deapth = tvdeapth;
+    header->tvsize.depth = tvDeapth;
     
     // read the total frames and frames per second
     unsigned int totalFrames;
@@ -190,7 +190,7 @@ int openFDVFile(char* name, struct FDVFileHeader* header, FILE** fp) {
     struct TVSize chromaSize;
     chromaSize.width = chromaWidth;
     chromaSize.height = chromaHeight;
-    chromaSize.deapth = chromaDeapth;
+    chromaSize.depth = chromaDeapth;
     
     header->chromaBlockSize = chromaSize;
     

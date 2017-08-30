@@ -102,7 +102,7 @@ void convertTV(TVSize size,SDL_Point* pts,float totalPixels, float xAng, float y
     
     int i=0;
     for (int tvh = 0; tvh < size.height; tvh++) {
-        for (int tvw=0; tvw< size.deapth; tvw++) {
+        for (int tvw=0; tvw< size.depth; tvw++) {
             for (int tvd = 0; tvd < size.width; tvd++) {
     
                 SDL_Point* twodpoint = &(pts[i]);

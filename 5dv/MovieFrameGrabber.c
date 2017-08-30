@@ -73,7 +73,7 @@ void grabThreeDImage2(struct zPixel* tv, struct TVSize tvsize, int imageIndex) {
     color.alpha = 255;
     drawTVEdges(tv, tvsize, color);
 
-    int index = tvsize.width * tvsize.deapth * imageIndex + tvsize.width * imageIndex + imageIndex;
+    int index = tvsize.width * tvsize.depth * imageIndex + tvsize.width * imageIndex + imageIndex;
     
     zPixel* p = &(tv[index]);
   
@@ -103,7 +103,7 @@ void createMovieToAFile2(char* str) {
     
     spheres1header.tvsize.width = x;
     spheres1header.tvsize.height = y;
-    spheres1header.tvsize.deapth = z;
+    spheres1header.tvsize.depth = z;
     
     float frameSizeInPizels = x*y*z;
     float totalSize = frameSizeInPizels*sizeof(zPixel);
@@ -151,7 +151,7 @@ void createMovieToAFile3() {
     
     spheres1header.tvsize.width = x;
     spheres1header.tvsize.height = y;
-    spheres1header.tvsize.deapth = z;
+    spheres1header.tvsize.depth = z;
     
     float frameSizeInPizels = x*y*z;
     float totalSize = frameSizeInPizels*sizeof(zPixel);

@@ -93,7 +93,7 @@ int performPhaseEncQuantization(unsigned char** inputBuffer, struct EncDecData t
     int sizeOfMacroBlockInBytes = sizeof(short int) * macroBlockDimension * macroBlockDimension * macroBlockDimension;
     int sizeOfMegaBlockInBytes = 4 + ( 2 + 2 * megaBlockDimension * megaBlockDimension * megaBlockDimension) * sizeOfMacroBlockInBytes; // 4 is the header + ( 2 which are cb and cr + 2 which are luma and alpha times 8)
     int megaBlocksInWidth = tvData.tvsize.width / (macroBlockDimension * megaBlockDimension);
-    int megaBlocksInDeapth = tvData.tvsize.deapth / (macroBlockDimension * megaBlockDimension);
+    int megaBlocksInDeapth = tvData.tvsize.depth / (macroBlockDimension * megaBlockDimension);
     int megaBlocksInHeight = tvData.tvsize.height / (macroBlockDimension * megaBlockDimension);
     int totalMegaBlocksOnTV = megaBlocksInWidth * megaBlocksInDeapth * megaBlocksInHeight;
     unsigned int totalSizeOfTempWritingBufferInBytes = totalMegaBlocksOnTV * sizeOfMegaBlockInBytes;
@@ -180,7 +180,7 @@ int performPhaseDecQuantization(unsigned char** inputBuffer,struct EncDecData tv
     int sizeOfMacroBlockInBytes = sizeof(short int) * macroBlockDimension * macroBlockDimension * macroBlockDimension;
     int sizeOfMegaBlockInBytes = 4 + ( 2 + 2 * megaBlockDimension * megaBlockDimension * megaBlockDimension) * sizeOfMacroBlockInBytes; // 4 is the header + ( 2 which are cb and cr + 2 which are luma and alpha times 8)
     int megaBlocksInWidth = tvData.tvsize.width / (macroBlockDimension * megaBlockDimension);
-    int megaBlocksInDeapth = tvData.tvsize.deapth / (macroBlockDimension * megaBlockDimension);
+    int megaBlocksInDeapth = tvData.tvsize.depth / (macroBlockDimension * megaBlockDimension);
     int megaBlocksInHeight = tvData.tvsize.height / (macroBlockDimension * megaBlockDimension);
     int totalMegaBlocksOnTV = megaBlocksInWidth * megaBlocksInDeapth * megaBlocksInHeight;
     unsigned int totalSizeOfTempWritingBufferInBytes = totalMegaBlocksOnTV * sizeOfMegaBlockInBytes;

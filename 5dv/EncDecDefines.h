@@ -112,7 +112,7 @@ struct DCTMegaBlock {
 struct zLocation {
     int x; // equivalent to width
     int y; // equivalent to height
-    int z; // equivalent to deapth
+    int z; // equivalent to depth
 };
 
 #endif /* EndDecDefines_h */

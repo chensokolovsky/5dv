@@ -1,3 +1,5 @@
+©5dv Chen Sokolovsky 2017
+
 5dv - executable usage:
 
 use one of these options:

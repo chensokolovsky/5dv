@@ -79,7 +79,7 @@ typedef struct zPixel {
 
 typedef struct TVSize {
     float width;
-    float deapth;
+    float depth;
     float height;
 }TVSize;
 

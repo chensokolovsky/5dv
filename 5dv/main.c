@@ -77,7 +77,7 @@ int displayFiles(int totalFiles,char* firstFilePath, char* secondFilePath) {
     fiveDVUFileHeader header2;
     if (totalFiles == 2) openFiveDVUFile(secondFilePath, &header2, &file2);
     
-    float totalTVPixels = header.tvsize.width * header.tvsize.deapth * header.tvsize.height;
+    float totalTVPixels = header.tvsize.width * header.tvsize.depth * header.tvsize.height;
     
     // grab the first image from the movie
     int imageIndex = 0;

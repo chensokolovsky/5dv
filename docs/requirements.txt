@@ -1,3 +1,5 @@
+©5dv Chen Sokolovsky 2017
+
 5dv - requirements:
 
 In order to run this you will need:

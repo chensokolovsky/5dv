@@ -66,7 +66,7 @@ int performPhaseDCT(unsigned char** inputBuffer, struct EncDecData tvData, unsig
     int sizeOfDCTMacroBlockInBytes = sizeof(short int) * macroBlockDimension * macroBlockDimension * macroBlockDimension;
     int sizeOfDCTMegaBlockInBytes = 4 + ( 2 + 2 * megaBlockDimension * megaBlockDimension * megaBlockDimension) * sizeOfDCTMacroBlockInBytes; // 4 is the header + ( 2 which are cb and cr + 2 which are luma and alpha times 8)
     int megaBlocksInWidth = tvData.tvsize.width / (macroBlockDimension * megaBlockDimension);
-    int megaBlocksInDeapth = tvData.tvsize.deapth / (macroBlockDimension * megaBlockDimension);
+    int megaBlocksInDeapth = tvData.tvsize.depth / (macroBlockDimension * megaBlockDimension);
     int megaBlocksInHeight = tvData.tvsize.height / (macroBlockDimension * megaBlockDimension);
     int totalMegaBlocksOnTV = megaBlocksInWidth * megaBlocksInDeapth * megaBlocksInHeight;
     unsigned int totalSizeOfTempWritingBufferInBytes = totalMegaBlocksOnTV * sizeOfDCTMegaBlockInBytes;
@@ -171,7 +171,7 @@ int performPhaseIDCT(unsigned char** inputBuffer,struct EncDecData tvData, unsig
     int sizeOfDCTMacroBlockInBytes = sizeof(unsigned char) * macroBlockDimension * macroBlockDimension * macroBlockDimension;
     int sizeOfDCTMegaBlockInBytes = 4 + ( 2 + 2 * megaBlockDimension * megaBlockDimension * megaBlockDimension) * sizeOfDCTMacroBlockInBytes; // 4 is the header + ( 2 which are cb and cr + 2 which are luma and alpha times 8)
     int megaBlocksInWidth = tvData.tvsize.width / (macroBlockDimension * megaBlockDimension);
-    int megaBlocksInDeapth = tvData.tvsize.deapth / (macroBlockDimension * megaBlockDimension);
+    int megaBlocksInDeapth = tvData.tvsize.depth / (macroBlockDimension * megaBlockDimension);
     int megaBlocksInHeight = tvData.tvsize.height / (macroBlockDimension * megaBlockDimension);
     int totalMegaBlocksOnTV = megaBlocksInWidth * megaBlocksInDeapth * megaBlocksInHeight;
     unsigned int totalSizeOfTempWritingBufferInBytes = totalMegaBlocksOnTV * sizeOfDCTMegaBlockInBytes;

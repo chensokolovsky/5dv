@@ -107,20 +107,20 @@ int performPhaseEncodeChromaBlocks(unsigned char** inBuffer,struct EncDecData tv
     // ----------------------------------------
     float width = tvData.tvsize.width;
     float height = tvData.tvsize.height;
-    float deapth = tvData.tvsize.deapth;
+    float depth = tvData.tvsize.depth;
     int totalFrames = tvData.totalFrames;
     
-    if (debugMain) printf("compressFile: received an uncompressed file with TV size:  %.0f: %.0f: %.0f and totalFrames: %d\n", width,deapth,height, totalFrames);
+    if (debugMain) printf("compressFile: received an uncompressed file with TV size:  %.0f: %.0f: %.0f and totalFrames: %d\n", width,depth,height, totalFrames);
     
     unsigned int pixelsInAChromaBlock = chromaBlockWidth * chromaBlockHeight * chromaBlockDeapth;
     // 2 is cb and cr, total pixels times y + alpha
     unsigned int bytesInAChromaStreamPerChromaBlock = 2 + pixelsInAChromaBlock * 2;
     
-    unsigned int pixelsInATVPlate = width * deapth;
+    unsigned int pixelsInATVPlate = width * depth;
     
     int totalChromaPlates = height / chromaBlockHeight;
     int totalRowsInPlate = width / chromaBlockWidth;
-    int totalColumnsInPlate = deapth / chromaBlockDeapth;
+    int totalColumnsInPlate = depth / chromaBlockDeapth;
     unsigned int totalChromaBlocksInPlate = totalRowsInPlate * totalColumnsInPlate;
     unsigned int totalChromaBlocksInTV = totalChromaPlates * totalChromaBlocksInPlate;
     
@@ -150,7 +150,7 @@ int performPhaseEncodeChromaBlocks(unsigned char** inBuffer,struct EncDecData tv
     // Start converting pixels to chroma blocks
     // -----------------------------------------
     for (int heightIndex = 0; heightIndex < totalChromaPlates; heightIndex++) {
-        for (int deapthIndex = 0; deapthIndex < totalColumnsInPlate; deapthIndex++) {
+        for (int depthIndex = 0; depthIndex < totalColumnsInPlate; depthIndex++) {
             for (int widthIndex = 0; widthIndex < totalRowsInPlate; widthIndex++) {
                 
                 // for each chroma block, we want to convert from RGBa to a block
@@ -161,19 +161,19 @@ int performPhaseEncodeChromaBlocks(unsigned char** inBuffer,struct EncDecData tv
                 // how many pixels in a group?
                 int totalPixelsInGroup = chromaBlockHeight * chromaBlockWidth * chromaBlockDeapth;
                 zPixel* inputBuffer = (zPixel*)malloc(totalPixelsInGroup * sizeof(zPixel));
-                int totalPixelsOnAPlate = width*deapth;
+                int totalPixelsOnAPlate = width*depth;
                 
                 // get the first index. This is the height so far
                 unsigned long long int indexOfFirstPixel = totalPixelsOnAPlate * heightIndex * chromaBlockHeight;
-                // plus the deapth so far
-                indexOfFirstPixel += deapthIndex * chromaBlockWidth * width;
+                // plus the depth so far
+                indexOfFirstPixel += depthIndex * chromaBlockWidth * width;
                 // plus the width so far
                 indexOfFirstPixel += widthIndex * chromaBlockWidth;
                 
                 
                 // now, place this widths on the input buffer
                 // we need three loops here as well, one for block heights,
-                // one for blocks deapth, and one for widths, filling the entire block with pixels from the right indexes
+                // one for blocks depth, and one for widths, filling the entire block with pixels from the right indexes
                 
                 int indexInDestinationBuffer = 0;
                 for (int blocksInnerHeight=0; blocksInnerHeight< chromaBlockHeight; blocksInnerHeight++) {
@@ -228,10 +228,10 @@ int performPhaseDecodeChromaBlocks(unsigned char** inBuffer,struct EncDecData tv
     
     int height = tvData.tvsize.height;
     int width =  tvData.tvsize.width;
-    int deapth =  tvData.tvsize.deapth;
+    int depth =  tvData.tvsize.depth;
     
     
-    unsigned int totalPixelsInTheTV = height * width * deapth;
+    unsigned int totalPixelsInTheTV = height * width * depth;
     unsigned int totalBytesPerTVFrame = totalPixelsInTheTV * sizeof(zPixel);
     
 
@@ -241,11 +241,11 @@ int performPhaseDecodeChromaBlocks(unsigned char** inBuffer,struct EncDecData tv
     
     //start reading to the file buffer
     
-    unsigned int pixelsInATVPlate = width * deapth;
+    unsigned int pixelsInATVPlate = width * depth;
     
     int totalPlates = height / chromaBlockHeight;
     int totalRowsInPlate = width / chromaBlockWidth;
-    int totalColumnsInPlate = deapth / chromaBlockDeapth;
+    int totalColumnsInPlate = depth / chromaBlockDeapth;
     
     // allocate mempry for reading the croma buffer per frame
     unsigned char* chromaBufferPerFrame = *inBuffer;
@@ -258,7 +258,7 @@ int performPhaseDecodeChromaBlocks(unsigned char** inBuffer,struct EncDecData tv
     // Start converting chroma blocks to pixels
     // -----------------------------------------
     for (int heightIndex = 0; heightIndex < totalPlates; heightIndex++) {
-        for (int deapthIndex = 0; deapthIndex < totalColumnsInPlate; deapthIndex++) {
+        for (int depthIndex = 0; depthIndex < totalColumnsInPlate; depthIndex++) {
             for (int widthIndex = 0; widthIndex < totalRowsInPlate; widthIndex++) {
                 
                 // for each chroma block, we want to convert from RGBa to a block
@@ -286,12 +286,12 @@ int performPhaseDecodeChromaBlocks(unsigned char** inBuffer,struct EncDecData tv
                 
                 // now place the result on the uncompressed tv buffer
                 
-                int totalPixelsOnAPlate = width*deapth;
+                int totalPixelsOnAPlate = width*depth;
                 
                 // get the first index. This is the height so far
                 unsigned long long int indexOfFirstPixel = totalPixelsOnAPlate * heightIndex * chromaBlockHeight;
-                // plus the deapth so far
-                indexOfFirstPixel += deapthIndex * chromaBlockDeapth * width;
+                // plus the depth so far
+                indexOfFirstPixel += depthIndex * chromaBlockDeapth * width;
                 // plus the width so far
                 indexOfFirstPixel += widthIndex * chromaBlockWidth;
                 
@@ -307,7 +307,7 @@ int performPhaseDecodeChromaBlocks(unsigned char** inBuffer,struct EncDecData tv
                             uncompressedFrameBuffer[indexOnTV] = resultDecompressedPixelBuffer[indexInDestinationBuffer];
                             
                             if (debugMain) {
-                                if (heightIndex == 0 && widthIndex == 0 && deapthIndex == 0 && blocksInnerHeight == 0 &&  blocksInnerDeapth == 0 && blocksInnerWidth == 0) {
+                                if (heightIndex == 0 && widthIndex == 0 && depthIndex == 0 && blocksInnerHeight == 0 &&  blocksInnerDeapth == 0 && blocksInnerWidth == 0) {
                                     printf("filling buffer from %llu\n", indexOnTV);
                                 }
                             }

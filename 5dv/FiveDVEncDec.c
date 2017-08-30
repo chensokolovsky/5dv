@@ -40,16 +40,16 @@ int compress(FILE** uFile,struct fiveDVUFileHeader inHeader,FILE** cFile, struct
     struct EncDecData tvData;
     float width = tvData.tvsize.width = inHeader.tvsize.width;
     float height = tvData.tvsize.height = inHeader.tvsize.height;
-    float deapth = tvData.tvsize.deapth = inHeader.tvsize.deapth;
+    float depth = tvData.tvsize.depth = inHeader.tvsize.depth;
     unsigned int totalFrames = tvData.totalFrames = inHeader.totalFrames;
     
     
-    if (debugMain) printf("compressFile: received an uncompressed file with TV size:  %.0f: %.0f: %.0f and totalFrames: %f\n", tvData.tvsize.width,tvData.tvsize.deapth,tvData.tvsize.height, tvData.totalFrames);
+    if (debugMain) printf("compressFile: received an uncompressed file with TV size:  %.0f: %.0f: %.0f and totalFrames: %f\n", tvData.tvsize.width,tvData.tvsize.depth,tvData.tvsize.height, tvData.totalFrames);
     
     // The current model does note include i or p frames. This is just a regular linearencoding, frame by frame
     
     /// Now read the input file frame by frame.
-    unsigned int pixelsInATVPlate = width * deapth;
+    unsigned int pixelsInATVPlate = width * depth;
     unsigned int pixelsInAFrame = pixelsInATVPlate * height;
     unsigned int totalBytesInAnUncompressedTVFrame = pixelsInAFrame * sizeof(zPixel);
     zPixel* uncompressedFrameBuffer = (zPixel*)calloc(totalBytesInAnUncompressedTVFrame,1);
@@ -153,15 +153,15 @@ int decompress(FILE** cFile,struct FDVFileHeader inHeader,FILE** uFile, struct f
     struct EncDecData tvData;
     float width = tvData.tvsize.width = inHeader.tvsize.width;
     float height = tvData.tvsize.height = inHeader.tvsize.height;
-    float deapth = tvData.tvsize.deapth = inHeader.tvsize.deapth;
+    float depth = tvData.tvsize.depth = inHeader.tvsize.depth;
     unsigned int totalFrames = tvData.totalFrames = inHeader.totalFrames;
     
-    if (debugMain) printf("compressFile: received an uncompressed file with TV size:  %.0f: %.0f: %.0f and totalFrames: %f\n", tvData.tvsize.width,tvData.tvsize.deapth,tvData.tvsize.height, tvData.totalFrames);
+    if (debugMain) printf("compressFile: received an uncompressed file with TV size:  %.0f: %.0f: %.0f and totalFrames: %f\n", tvData.tvsize.width,tvData.tvsize.depth,tvData.tvsize.height, tvData.totalFrames);
     
     // The current model does note include i or p frames. This is just a regular linearencoding, frame by frame
     
     /// Now read the input file frame by frame.
-    unsigned int pixelsInATVPlate = width * deapth;
+    unsigned int pixelsInATVPlate = width * depth;
     unsigned int pixelsInAFrame = pixelsInATVPlate * height;
     unsigned int totalBytesInAnUncompressedTVFrame = pixelsInAFrame * sizeof(zPixel);
     zPixel* uncompressedFrameBuffer = (zPixel*)calloc(totalBytesInAnUncompressedTVFrame,1);

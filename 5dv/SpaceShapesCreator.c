@@ -27,13 +27,13 @@
 // assuming tv is already cleared. Clearing sets the positions of each pixel in the array
 void drawTVEdges(struct zPixel* tv, struct TVSize size, struct zPixel color) {
     
-    int plateSize = size.width * size.deapth;
+    int plateSize = size.width * size.depth;
         
     for (int tvh = 0; tvh < size.height; tvh++) {
-        for (int tvw=0; tvw< size.deapth; tvw++) {
+        for (int tvw=0; tvw< size.depth; tvw++) {
             for (int tvd = 0; tvd < size.width; tvd++) {
                 
-                int indexInPlate = tvw * size.deapth + tvd;
+                int indexInPlate = tvw * size.depth + tvd;
                 int globalPixelIndex = tvh * plateSize + indexInPlate;
                 
                 zPixel* p = &(tv[globalPixelIndex]);
@@ -43,14 +43,14 @@ void drawTVEdges(struct zPixel* tv, struct TVSize size, struct zPixel color) {
                 if (tvw == 0 && tvd == 0) isEdge = 1;
                 if (tvd == 0 && tvh == 0) isEdge = 1;
                 if (tvh == size.height-1 && tvw == size.width-1) isEdge = 1;
-                if (tvw == size.width-1 && tvd == size.deapth-1) isEdge = 1;
-                if (tvd == size.deapth-1 && tvh == size.height-1) isEdge = 1;
+                if (tvw == size.width-1 && tvd == size.depth-1) isEdge = 1;
+                if (tvd == size.depth-1 && tvh == size.height-1) isEdge = 1;
                 if (tvh == 0 && tvw == size.width-1) isEdge = 1;
-                if (tvw == 0 && tvd == size.deapth-1) isEdge = 1;
+                if (tvw == 0 && tvd == size.depth-1) isEdge = 1;
                 if (tvd == 0 && tvh == size.height-1) isEdge = 1;
                 if (tvh == size.height-1 && tvw == 0) isEdge = 1;
                 if (tvw == size.width-1 && tvd == 0) isEdge = 1;
-                if (tvd == size.deapth-1 && tvh == 0) isEdge = 1;
+                if (tvd == size.depth-1 && tvh == 0) isEdge = 1;
                 
                 if (!isEdge) continue;
                 
@@ -71,7 +71,7 @@ void clearTV(struct zPixel* tv, struct TVSize size) {
     
     int i = 0;
     for (int tvh = 0; tvh < size.height; tvh++) {
-        for (int tvw=0; tvw< size.deapth; tvw++) {
+        for (int tvw=0; tvw< size.depth; tvw++) {
             for (int tvd = 0; tvd < size.width; tvd++) {
                 
                 zPixel* p = &(tv[i]);
@@ -111,7 +111,7 @@ void addSphere(struct zPixel* tv, struct TVSize size, struct zPoint center, int 
     int i= 0;
     
     for (int tvh = 0; tvh < size.height; tvh++) {
-        for (int tvw=0; tvw< size.deapth; tvw++) {
+        for (int tvw=0; tvw< size.depth; tvw++) {
             for (int tvd = 0; tvd < size.width; tvd++) {
                 
                 zPixel* p = &(tv[i]);
@@ -151,14 +151,14 @@ void fillTVWithColorSquares(struct zPixel* tv, struct TVSize size) {
     
     int i=0;
      for (int tvh = 0; tvh < size.height; tvh++) {
-         for (int tvw=0; tvw< size.deapth; tvw++) {
+         for (int tvw=0; tvw< size.depth; tvw++) {
              for (int tvd = 0; tvd < size.width; tvd++) {
                  
                 zPixel* p = &(tv[i]);
                  
                  p->R = (tvw < size.width * 0.5) ? 125 : 255;
                  p->G = (tvh > size.height * 0.5) ? 0 : 255;
-                 p->B = (tvd > size.deapth * 0.5) ? 0 : 255;
+                 p->B = (tvd > size.depth * 0.5) ? 0 : 255;
                  p->alpha = 10;
                  
                  i++;

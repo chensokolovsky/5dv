@@ -45,8 +45,8 @@ int createFiveDVUFile(char* fileName, struct fiveDVUFileHeader header,FILE **fp)
     unsigned int tvheight = header.tvsize.height;
     ret = fwrite(&tvheight,4,1,*fp);
     if (ret != 1) return -1;
-    unsigned int tvdeapth = header.tvsize.deapth;
-    ret = fwrite(&tvdeapth,4,1,*fp);
+    unsigned int tvDeapth = header.tvsize.depth;
+    ret = fwrite(&tvDeapth,4,1,*fp);
     if (ret != 1) return -1;
     unsigned int totalFrames = header.totalFrames;
     ret = fwrite(&totalFrames,4,1,*fp);
@@ -62,7 +62,7 @@ int createFiveDVUFile(char* fileName, struct fiveDVUFileHeader header,FILE **fp)
 // add images to the file
 int writeFrameToFiveDVUFile(struct TVSize size, zPixel* buffer, FILE **fp) {
     
-    unsigned int sizeOfEachFrameInPixels = size.width * size.height * size.deapth;
+    unsigned int sizeOfEachFrameInPixels = size.width * size.height * size.depth;
     int sizeofpixel = sizeof(zPixel);
     unsigned int sizeOfEachFrameInBytes = sizeOfEachFrameInPixels * sizeofpixel;
    
@@ -100,12 +100,12 @@ int openFiveDVUFile(char* fileName, fiveDVUFileHeader* header, FILE** fp) {
     unsigned int tvheight;
     ret = fread(&tvheight,4,1,*fp);
     if (ret != 1) return -1;
-    unsigned int tvdeapth;
-    ret = fread(&tvdeapth,4,1,*fp);
+    unsigned int tvDeapth;
+    ret = fread(&tvDeapth,4,1,*fp);
     if (ret != 1) return -1;
     header->tvsize.width = tvwidth;
     header->tvsize.height = tvheight;
-    header->tvsize.deapth = tvdeapth;
+    header->tvsize.depth = tvDeapth;
     
     // read the total frames and frames per second
     unsigned int totalFrames;
@@ -127,7 +127,7 @@ int openFiveDVUFile(char* fileName, fiveDVUFileHeader* header, FILE** fp) {
 int readFrameFromFiveDVUFile(struct TVSize size, zPixel* buffer, unsigned int frameNumber, FILE** fp) {
     
     //malloc data of file
-    unsigned int totalPixelsInAFrame = size.deapth * size.width * size.height;
+    unsigned int totalPixelsInAFrame = size.depth * size.width * size.height;
     unsigned int totalBytesPerFrame = totalPixelsInAFrame * sizeof(zPixel);
     
     //seek

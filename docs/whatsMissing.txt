@@ -1,9 +1,18 @@
-5dv - requirements:
+©5dv Chen Sokolovsky 2017
 
-In order to run this you will need:
+5dv - What is missing:
 
-A) Osx machine with Xcode (Windows or CMake version coming soon)
-B) A copy of the SDL2 framework
-C) Zip and unzip executables should be installed on your machine in one of your default paths
+There is a lot of stuff that can be done here. These are just a few. I tried ordering them from the most important to the least:
 
+- Create 3D motion vectors, i frames, p frames and b frames. The current project only compressed each frame on its own
+
+- Compression: Use a smarter compression than zip - dedicated to chroma blocks, using RLE and Hoffman trees (http://www.impulseadventure.com/photo/jpeg-huffman-coding.html)
+
+- A converter from openGL to 5dvu will be a nice addition
+
+- A “processing” version of the simulator will be a nice addition
+
+- Compatibility between 5dv and lookingglassfactory will be a nice addition
+
+- Some initial types for the create mode other than spheres will be nice
 
