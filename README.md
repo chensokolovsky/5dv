@@ -1,4 +1,3 @@
-# 5dv
 ![logo](http://5dv.org/imgs/logoBlueSmall.png)
 
 Welcome to 5dv. For general questions about this please visit the project's home page: http://www.5dv.org
