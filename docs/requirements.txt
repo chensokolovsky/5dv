@@ -5,7 +5,7 @@
 In order to run this you will need:
 
 A) Osx machine with Xcode (Windows or CMake version coming soon)
-B) A copy of the SDL2 framework
+B) A copy of the SDL2 framework installed on your machine
 C) Zip and unzip executables should be installed on your machine in one of your default paths
 
 
