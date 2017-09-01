@@ -1,8 +1,8 @@
 dependencies: \
-  /Users/chensokolovsky/chenPrograms/5dvgit/5dv/MovieFrameGrabber.c \
-  /Users/chensokolovsky/chenPrograms/5dvgit/5dv/MovieFrameGrabber.h \
-  /Users/chensokolovsky/chenPrograms/5dvgit/5dv/SpaceShapesCreator.h \
-  /Users/chensokolovsky/chenPrograms/5dvgit/5dv/SimDefs.h \
+  /Users/chensokolovsky/chenPrograms/5dvgit/src/MovieFrameGrabber.c \
+  /Users/chensokolovsky/chenPrograms/5dvgit/src/MovieFrameGrabber.h \
+  /Users/chensokolovsky/chenPrograms/5dvgit/src/SpaceShapesCreator.h \
+  /Users/chensokolovsky/chenPrograms/5dvgit/src/SimDefs.h \
   /Library/Frameworks/SDL2.framework/Headers/SDL.h \
   /Library/Frameworks/SDL2.framework/Headers/SDL_main.h \
   /Library/Frameworks/SDL2.framework/Headers/SDL_stdinc.h \
@@ -47,17 +47,17 @@ dependencies: \
   /Library/Frameworks/SDL2.framework/Headers/SDL_system.h \
   /Library/Frameworks/SDL2.framework/Headers/SDL_timer.h \
   /Library/Frameworks/SDL2.framework/Headers/SDL_version.h \
-  /Users/chensokolovsky/chenPrograms/5dvgit/5dv/FDVFile.h \
-  /Users/chensokolovsky/chenPrograms/5dvgit/5dv/FiveDVEncDec.h \
-  /Users/chensokolovsky/chenPrograms/5dvgit/5dv/FiveDVUFile.h \
-  /Users/chensokolovsky/chenPrograms/5dvgit/5dv/EncDecDefines.h \
-  /Users/chensokolovsky/chenPrograms/5dvgit/5dv/FiveDVFrameEncDec.h \
-  /Users/chensokolovsky/chenPrograms/5dvgit/5dv/EncDecChromaBlocks.h \
-  /Users/chensokolovsky/chenPrograms/5dvgit/5dv/EncDecMacroBlocks.h \
-  /Users/chensokolovsky/chenPrograms/5dvgit/5dv/EncDecDCT.h \
-  /Users/chensokolovsky/chenPrograms/5dvgit/5dv/DCT.h \
-  /Users/chensokolovsky/chenPrograms/5dvgit/5dv/fastDct.h \
-  /Users/chensokolovsky/chenPrograms/5dvgit/5dv/EncDecQuantization.h \
-  /Users/chensokolovsky/chenPrograms/5dvgit/5dv/EncDecZigZag.h \
-  /Users/chensokolovsky/chenPrograms/5dvgit/5dv/ZigZag.h \
-  /Users/chensokolovsky/chenPrograms/5dvgit/5dv/zips.h
+  /Users/chensokolovsky/chenPrograms/5dvgit/src/FDVFile.h \
+  /Users/chensokolovsky/chenPrograms/5dvgit/src/FiveDVEncDec.h \
+  /Users/chensokolovsky/chenPrograms/5dvgit/src/FiveDVUFile.h \
+  /Users/chensokolovsky/chenPrograms/5dvgit/src/EncDecDefines.h \
+  /Users/chensokolovsky/chenPrograms/5dvgit/src/FiveDVFrameEncDec.h \
+  /Users/chensokolovsky/chenPrograms/5dvgit/src/EncDecChromaBlocks.h \
+  /Users/chensokolovsky/chenPrograms/5dvgit/src/EncDecMacroBlocks.h \
+  /Users/chensokolovsky/chenPrograms/5dvgit/src/EncDecDCT.h \
+  /Users/chensokolovsky/chenPrograms/5dvgit/src/DCT.h \
+  /Users/chensokolovsky/chenPrograms/5dvgit/src/fastDct.h \
+  /Users/chensokolovsky/chenPrograms/5dvgit/src/EncDecQuantization.h \
+  /Users/chensokolovsky/chenPrograms/5dvgit/src/EncDecZigZag.h \
+  /Users/chensokolovsky/chenPrograms/5dvgit/src/ZigZag.h \
+  /Users/chensokolovsky/chenPrograms/5dvgit/src/zips.h

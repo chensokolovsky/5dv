@@ -1,2 +1,2 @@
-dependencies: /Users/chensokolovsky/chenPrograms/5dvgit/5dv/zips.c \
-  /Users/chensokolovsky/chenPrograms/5dvgit/5dv/zips.h
+dependencies: /Users/chensokolovsky/chenPrograms/5dvgit/src/zips.c \
+  /Users/chensokolovsky/chenPrograms/5dvgit/src/zips.h

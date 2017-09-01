@@ -98,7 +98,7 @@
 			isa = PBXGroup;
 			children = (
 				BC3AF6B01F526E3F00AED66F /* Frameworks */,
-				BC3AF63A1F526BF900AED66F /* 5dv */,
+				BC3AF63A1F526BF900AED66F /* src */,
 				BC3AF6391F526BF900AED66F /* Products */,
 			);
 			sourceTree = "<group>";
@@ -111,7 +111,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		BC3AF63A1F526BF900AED66F /* 5dv */ = {
+		BC3AF63A1F526BF900AED66F /* src */ = {
 			isa = PBXGroup;
 			children = (
 				BC3AF63B1F526BF900AED66F /* main.c */,
@@ -136,7 +136,7 @@
 				BC3AF6561F526D5400AED66F /* SimShapeCreator.h */,
 				BC3AF6571F526D5400AED66F /* SimShapeCreator.c */,
 			);
-			path = 5dv;
+			path = src;
 			sourceTree = "<group>";
 		};
 		BC3AF6961F526DB200AED66F /* EncDecPramePhases */ = {

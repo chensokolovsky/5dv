@@ -1,6 +1,6 @@
 dependencies: \
-  /Users/chensokolovsky/chenPrograms/5dvgit/5dv/EncDecZigZag.c \
-  /Users/chensokolovsky/chenPrograms/5dvgit/5dv/EncDecZigZag.h \
+  /Users/chensokolovsky/chenPrograms/5dvgit/src/EncDecZigZag.c \
+  /Users/chensokolovsky/chenPrograms/5dvgit/src/EncDecZigZag.h \
   /Library/Frameworks/SDL2.framework/Headers/SDL.h \
   /Library/Frameworks/SDL2.framework/Headers/SDL_main.h \
   /Library/Frameworks/SDL2.framework/Headers/SDL_stdinc.h \
@@ -45,8 +45,8 @@ dependencies: \
   /Library/Frameworks/SDL2.framework/Headers/SDL_system.h \
   /Library/Frameworks/SDL2.framework/Headers/SDL_timer.h \
   /Library/Frameworks/SDL2.framework/Headers/SDL_version.h \
-  /Users/chensokolovsky/chenPrograms/5dvgit/5dv/DCT.h \
-  /Users/chensokolovsky/chenPrograms/5dvgit/5dv/EncDecDefines.h \
-  /Users/chensokolovsky/chenPrograms/5dvgit/5dv/SimDefs.h \
-  /Users/chensokolovsky/chenPrograms/5dvgit/5dv/fastDct.h \
-  /Users/chensokolovsky/chenPrograms/5dvgit/5dv/ZigZag.h
+  /Users/chensokolovsky/chenPrograms/5dvgit/src/DCT.h \
+  /Users/chensokolovsky/chenPrograms/5dvgit/src/EncDecDefines.h \
+  /Users/chensokolovsky/chenPrograms/5dvgit/src/SimDefs.h \
+  /Users/chensokolovsky/chenPrograms/5dvgit/src/fastDct.h \
+  /Users/chensokolovsky/chenPrograms/5dvgit/src/ZigZag.h
