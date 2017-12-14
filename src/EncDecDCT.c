@@ -78,7 +78,7 @@ int performPhaseDCT(unsigned char** inputBuffer, struct EncDecData tvData, unsig
     short int* writingPtr = tempOutputBuffer;
     
     float c[N+2];
-    initFastDCT(c);
+    initFastDCTTwo(c);
     
     // We have an allocated temp writing buffer.
     // Start reading the input buffer mega blocks
@@ -183,7 +183,7 @@ int performPhaseIDCT(unsigned char** inputBuffer,struct EncDecData tvData, unsig
     unsigned char* writingPtr = tempOutputBuffer;
     
     float c[N+2];
-    initFastDCT(c);
+    initFastDCTTwo(c);
     
     // We have an allocated temp writing buffer.
     // Start reading the input buffer mega blocks

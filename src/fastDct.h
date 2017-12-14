@@ -36,6 +36,7 @@
 
 #define N 8
 
+int initFastDCTTwo(float* c);
 
 int initFastDCT(float* c);
 int fast3DDct(float* in, float* out,float* c);

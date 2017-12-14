@@ -28,6 +28,89 @@
 
 #include "fastDct.h"
 
+// in comparison to the slower method, we took the c[8] and it is now called factor. We do the muliplication here in advance once instead of when running the dct
+int initFastDCTTwo(float* c) {
+    
+    float factor = sqrt(.25);
+    
+    c[0] = factor * cos(M_PI * 0.0625);
+    c[1] = factor * cos(M_PI * 0.125);
+    c[2] = factor * cos(M_PI * 0.1875);
+    c[3] = factor * cos(M_PI * 0.25);
+    c[4] = factor * cos(M_PI * 0.3125);
+    c[5] = factor * cos(M_PI * 0.375);
+    c[6] = factor * cos(M_PI * 0.4375);
+    
+    // two consts as scalars
+    c[7] = sqrt(.125); // for k0
+    c[9] = sqrt(.5) * factor; // for idct
+    
+    return 1;
+}
+
+// the faster method (Two) is not allocating new q floats, also, the c[8] is multipied inside the c factors already
+int fastDctTwo(float* n,float* o,float* c, float* q) {
+    // the q's
+    q[0] = n[0]-n[7];
+    q[1] = n[1]-n[6];
+    q[2] = n[2]-n[5];
+    q[3] = n[3]-n[4];
+    
+    q[4] = n[0]+n[7];
+    q[5] = n[1]+n[6];
+    q[6] = n[2]+n[5];
+    q[7] = n[3]+n[4];
+    
+    q[8] = q[4]+q[7];
+    q[9] = q[5]+q[6];
+    q[10] = q[4]-q[7];
+    q[11] = q[5]-q[6];
+    
+    o[0] = c[7]*(q[8]+q[9]);
+    o[1] = c[0]*q[0]+c[2]*q[1]+c[4]*q[2]+c[6]*q[3];
+    o[2] = c[1]*q[10]+c[5]*q[11];
+    o[3] = c[2]*q[0]-c[6]*q[1]-c[0]*q[2]-c[4]*q[3];
+    o[4] = c[3]*(q[8]-q[9]);
+    o[5] = c[4]*q[0]-c[0]*q[1]+c[6]*q[2]+c[2]*q[3];
+    o[6] = c[5]*q[10]-c[1]*q[11];
+    o[7] = c[6]*q[0]-c[4]*q[1]+c[2]*q[2]-c[0]*q[3];
+    
+    return 1;
+}
+
+// see forward dct TWO notes above
+int fastIDctTwo(float* n,float* o,float* c, float* q) {
+    
+    // the q's
+    q[0] = n[2]*c[1] + n[6]*c[5];
+    q[1] = n[2]*c[5] - n[6]*c[1];
+    q[2] = n[1]*c[0]+n[3]*c[2]+n[5]*c[4]+n[7]*c[6];
+    q[3] = n[1]*c[6]-n[3]*c[4]+n[5]*c[2]-n[7]*c[0];
+    
+    q[4] = n[0]*c[9]+n[4]*c[3];
+    q[5] = n[0]*c[9]-n[4]*c[3];
+    
+    q[6] = n[1]*c[2]-n[3]*c[6]-n[5]*c[0]-n[7]*c[4];
+    q[7] = n[1]*c[4]-n[3]*c[0]+n[5]*c[6]+n[7]*c[2];
+    
+    q[8] = q[5] + q[1];
+    q[9] = q[5] - q[1];
+    q[10] = q[4] + q[0];
+    q[11] = q[4] - q[0];
+    
+    o[0] = q[10]+ q[2];
+    o[1] = q[8] + q[6];
+    o[2] = q[9] + q[7];
+    o[3] = q[11] + q[3];
+    o[4] = q[11] - q[3];
+    o[5] = q[9] - q[7];
+    o[6] = q[8] - q[6];
+    o[7] = q[10] - q[2];
+    
+    return 1;
+}
+
+// not used. We now use the faster method called initFastDCTTwo
 int initFastDCT(float* c) {
     
     c[0] = cos(M_PI * 0.0625);
@@ -46,6 +129,7 @@ int initFastDCT(float* c) {
     return 1;
 }
 
+// not used. We now use the faster method called fastDCTTwo
 int fastDct(float* n,float* o,float* c) {
     
     
@@ -77,6 +161,7 @@ int fastDct(float* n,float* o,float* c) {
     return 1;
 }
 
+// not used. We now use the faster method called fastIDCTTwo
 int fastIDct(float* n,float* o,float* c) {
     
     // the q's
@@ -112,14 +197,16 @@ int fastIDct(float* n,float* o,float* c) {
 int fast2DDct(float* in, float* out,float* c) {
     
     float temp[N*N];
+    float col[N];
+    float res[N];
+    float q[N+4];
+    
     for (int m=0;m<N;m++) {
-        fastDct(&(in[m*N]), &temp[m*N],c);
+        fastDctTwo(&(in[m*N]), &temp[m*N],c,q);
     }
     for (int b=0;b<N;b++) {
-        float col[N];
-        float res[N];
         for (int r=0;r<N;r++) col[r] = temp[r*N+b];
-        fastDct(col, res,c);
+        fastDctTwo(col, res,c,q);
         for (int j=0;j<N;j++) out[j*N+b]= res[j];
     }
     
@@ -129,15 +216,17 @@ int fast2DDct(float* in, float* out,float* c) {
 
 int fast2DIDct(float* in, float* out, float* c) {
     float temp[N*N];
+    float col[N];
+    float res[N];
+    float q[N+4];
+    
     for (int m=0;m<N;m++) {
-        fastIDct(&(in[m*N]), &temp[m*N],c);
+        fastIDctTwo(&(in[m*N]), &temp[m*N],c,q);
     }
     
     for (int b=0;b<N;b++) {
-        float col[N];
-        float res[N];
         for (int r=0;r<N;r++) col[r] = temp[r*N+b];
-        fastIDct(col, res,c);
+        fastIDctTwo(col, res,c,q);
         for (int j=0;j<N;j++) out[j*N+b]= res[j];
     }
     
@@ -149,19 +238,21 @@ int fast2DIDct(float* in, float* out, float* c) {
 int fast3DDct(float* in, float* out,float* c) {
     
     float temp[N*N*N];
+    float pole[N];
+    float res[N];
+    float q[N+4];
+    
     for (int m=0;m<N;m++) {
         fast2DDct(&(in[m*N*N]), &temp[m*N*N],c);
     }
-    
+
     int factors[N];
     int factorsS[N];
     for (int h=0; h<N;h++) {factors[h] = h*N*N; factorsS[h] = h*N;}
     for (int w=0;w<N;w++) {
         for (int d=0;d<N;d++) {
-            float pole[N];
-            float res[N];
             for (int k=0;k<N;k++) pole[k] = temp[factorsS[w]+d+factors[k]];
-            fastDct(pole, res, c);
+            fastDctTwo(pole, res, c,q);
             for (int l=0;l<N;l++) out[factorsS[w]+d+factors[l]] = res[l];
         }
     }
@@ -172,6 +263,10 @@ int fast3DDct(float* in, float* out,float* c) {
 int fast3DIDct(float* in, float* out,float* c) {
     
     float temp[N*N*N];
+    float pole[N];
+    float res[N];
+    float q[N+4];
+    
     for (int m=0;m<N;m++) {
         fast2DIDct(&(in[m*N*N]), &temp[m*N*N],c);
     }
@@ -181,10 +276,9 @@ int fast3DIDct(float* in, float* out,float* c) {
     for (int h=0; h<N;h++) {factors[h] = h*N*N; factorsS[h] = h*N;}
     for (int w=0;w<N;w++) {
         for (int d=0;d<N;d++) {
-            float pole[N];
-            float res[N];
+
             for (int k=0;k<N;k++) pole[k] = temp[factorsS[w]+d+factors[k]];
-            fastIDct(pole, res, c);
+            fastIDctTwo(pole, res, c,q);
             for (int l=0;l<N;l++) out[factorsS[w]+d+factors[l]] = res[l];
         }
     }
